@@ -51,14 +51,7 @@ else
 endif
 
 install: check-ledger
-	go install $(BUILD_FLAGS) ./cmd/gaia/cmd/gaiad
-	go install $(BUILD_FLAGS) ./cmd/gaia/cmd/gaiacli
-
-install_relay:
-	go install $(BUILD_FLAGS) ./cmd/relay
-
-install_debug:
-	go install $(BUILD_FLAGS) ./cmd/gaia/cmd/gaiadebug
+	go install $(BUILD_FLAGS) ./cmd/eosrelay
 
 dist:
 	@bash publish/dist.sh
