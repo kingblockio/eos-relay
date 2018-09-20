@@ -4,11 +4,10 @@ import (
 	"os"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/kingblockio/relay/app"
 	"github.com/cosmos/cosmos-sdk/version"
-	ibccmd "github.com/cosmos/cosmos-sdk/x/ibc/client/cli"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/cli"
+	eosrelay "github.com/kingblockio/eos-relay/app"
 )
 
 // rootCmd is the entry point for this binary
@@ -24,7 +23,7 @@ func main() {
 	cobra.EnableCommandSorting = false
 
 	// get the codec
-	cdc := app.MakeCodec()
+	cdc := eosrelay.MakeCodec()
 
 	// TODO: Setup keybase, viper object, etc. to be passed into
 	// the below functions and eliminate global vars, like we do
@@ -33,7 +32,7 @@ func main() {
 
 	rootCmd.AddCommand(
 		client.PostCommands(
-			ibccmd.IBCRelayCmd(cdc),
+			eosrelay.IBCRelayCmd(cdc),
 		)...)
 
 	// add proxy, version and key info
